@@ -37,10 +37,10 @@
             </tr>
         </thead>
         <tbody>
-            {% for item in Doctor %}
+            {% for item in doctors %}
                 <tr>
                     <td>{{ item.Name }}</td>
-                        <td> <button type="button" class="btn btn-primary" >دریافت نوبت</button></td>
+                        <td> <a href="{{ item.Code }}"><button type="button" class="btn btn-primary" >دریافت نوبت</button></a></td>
                 </tr>
             {% endfor %}
         </tbody>

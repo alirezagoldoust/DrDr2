@@ -1,12 +1,9 @@
-from django.urls import path, include
-from .views import List, List_html
+from django.urls import path
+from .views import List_Doctor, List_Specialty, Reserve
 
 urlpatterns = [
-    path('', List_html),
-    path('Dermatology/', include('Dermatology.urls')),
-    path('Pulmonology/',include('Pulmonology.urls')),
-    path('Neurology/',include('Neurology.urls')),
-    path('Nephrology/',include('Nephrology.urls')),
-    path('Hematology/',include('Hematology.urls')),
-    path('Cardiology/',include('Cardiology.urls'))
+    path('', List_Specialty),
+    path('<str:speciality_name>/', List_Doctor),
+    path('<str:speciality_name>/<str:doctor_id>/', Reserve),
 ]
+

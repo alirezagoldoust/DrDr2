@@ -12,6 +12,9 @@ class doctor(models.Model):
     Sum_Scores=models.FloatField(default=0, editable=False)
     Count_Scores=models.FloatField(default=0, editable=False)
     Average_Score=models.FloatField(default=0, editable=False)
+    Code=models.CharField(max_length=6, unique=True)
+    Phone_number=models.CharField(max_length=11)
+    Visit_cost=models.IntegerField()
     def __str__(self):
         return self.Name
 
