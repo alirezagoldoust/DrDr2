@@ -1,5 +1,5 @@
 from django.contrib.admin import ModelAdmin, register
-from .models import speciality, doctor, patient, reserve, comment
+from .models import speciality, doctor, patient, comment, reserve
 # Register your models here.
 
 @register(speciality)

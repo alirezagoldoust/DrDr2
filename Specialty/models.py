@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 # Create your models here.
 
 class speciality(models.Model):
@@ -22,13 +23,15 @@ class doctor(models.Model):
 class patient(models.Model):
     Name=models.CharField(max_length=200)
     Age=models.PositiveIntegerField()
+    National_id=models.IntegerField()
     def __str__(self):
         return self.Name
 
 class reserve(models.Model):
     Bimar = models.ForeignKey(patient, on_delete=models.CASCADE)
     Doctor = models.ForeignKey(doctor, on_delete=models.CASCADE)
-    Time = models.DateTimeField()
+    Time = models.TimeField()
+    Date = models.DateField(default=datetime.today().date())
     def __str__(self):
         return f'{self.Bimar} - {self.Doctor} in {self.Time}'
 
