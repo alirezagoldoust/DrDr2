@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa", dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,16 +7,54 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../assets/style.css">
 </head>
 <body>
-    <br>
-    <br>
-    <h1 style='text-align: center;'>Welcome to DrDr App!</h1>
-    <a href="/specialty">
-        <br>
-        <div class="d-grid gap-2 col-3 mx-auto">
-            <button class="btn btn-primary" type="button">Click Here For Specialties</button>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="../../assets/img/symbol.svg" alt="">
+                <img src="../../assets/img/drdr.svg" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/specialty/">تخصص ها</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </a>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1 style='text-align: center;'>به دکتردکتر خوش آمدید!</h1>
+    <!-- <a href="/specialty"> -->
+        <!-- <br> -->
+        <!-- <div class="d-grid gap-2 col-3 mx-auto"> -->
+            <!-- <button class="btn btn-primary" type="button">Click Here For Specialties</button> -->
+        <!-- </div> -->
+    <!-- </a> -->
+    <br>
+    <br>
+    <br>
+    
+    <form>
+        <fieldset>
+          <div class="d-grid gap-2 col-3 mx-auto">
+            <select id="disabledSelect" class="form-select">
+                    <option>انتخاب تخصص</option>
+                {% for spec in specialities %}
+                    <option>{{ spec.Name }}</option>
+                {% endfor %}
+            </select>
+          <a href=""><button type="submit" class="btn btn-primary">جستجوی دکترها</button></a>
+          </div>
+        </fieldset>
+      </form>
 </body>
 </html>
