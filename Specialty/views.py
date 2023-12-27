@@ -14,10 +14,14 @@ def List_Doctor(request, speciality_name):
     return render(request, 'Logy/logy.html', context={'doctors':doctors, 'specialty':speciality_name})
 
 def Reserve(request, speciality_name, doctor_id):
+
     if request.method == 'GET':
+        # Sending the selected doctors data to html
         dr = doctor.objects.get(Code=doctor_id)
         return render(request, 'Detail/detail.html', context={'flag':False,'doctor':dr})
+
     if request.method == 'POST':
+        # Getting data about reservation
         input = {
             'name' : request.POST['name'] + ' ' + request.POST['lastname'],
             'ni'   : request.POST['ni'],
@@ -26,8 +30,10 @@ def Reserve(request, speciality_name, doctor_id):
             'time' : request.POST['time'],
         }
         selected_doctor=doctor.objects.get(Code=doctor_id)
+
+        # Checking possibilty of reservation
         if not reserve.objects.filter(Doctor=selected_doctor, Date = input['date'], Time=input['time']).exists():
-            # if datetime(2020, 1, 1, 9, 0, 0).time() < input['time'] < datetime.time(2020, 1, 1, 17, 0, 0).time():
+            # Checking if user exist in database or making it
             if not patient.objects.filter(National_id=input['ni']).exists():
                 patient.objects.create(Name=input['name'], Age=input['age'], National_id=input['ni'])
             selected_patient = patient.objects.get(National_id=input['ni'])
@@ -35,8 +41,8 @@ def Reserve(request, speciality_name, doctor_id):
                 Bimar=selected_patient,
                 Doctor=selected_doctor,
                 Date=input['date'],
-                Time=input['time'],
+                Time=input['time']
             )
-            return HttpResponse('نوبت با موفقیت رزرو شد')
+            return render(request, 'Specialty/reserve.html', {'Success' : True})
         else:
-            return HttpResponse('زمان مورد نظر خالی نیست ، لطفا تاریخ یا زمان دیگری را انتخاب کنید.')
+            return render(request, 'Specialty/reserve.html', {'Success' : False})
