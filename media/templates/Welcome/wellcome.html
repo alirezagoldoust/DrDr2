@@ -28,33 +28,22 @@
             </div>
         </div>
     </nav>
-    <br>
-    <br>
-    <br>
-    <br>
+    <br> <br> <br> <br>
     <h1 style='text-align: center;'>به دکتردکتر خوش آمدید!</h1>
-    <!-- <a href="/specialty"> -->
-        <!-- <br> -->
-        <!-- <div class="d-grid gap-2 col-3 mx-auto"> -->
-            <!-- <button class="btn btn-primary" type="button">Click Here For Specialties</button> -->
-        <!-- </div> -->
-    <!-- </a> -->
-    <br>
-    <br>
-    <br>
-    
-    <form>
+    <br> <br> <br>
+    <form method="post">
+        {% csrf_token %}
         <fieldset>
           <div class="d-grid gap-2 col-3 mx-auto">
-            <select id="disabledSelect" class="form-select">
-                    <option>انتخاب تخصص</option>
+            <select id="disabledSelect" class="form-select" name="selected_specialty">
+                    <option disabled="True">انتخاب تخصص</option>
                 {% for spec in specialities %}
                     <option>{{ spec.Name }}</option>
                 {% endfor %}
             </select>
-          <a href=""><button type="submit" class="btn btn-primary">جستجوی دکترها</button></a>
-          </div>
+            <button type="submit" class="btn btn-primary">جستجوی دکترها</button>
+            </div>
         </fieldset>
-      </form>
+    </form>
 </body>
 </html>
