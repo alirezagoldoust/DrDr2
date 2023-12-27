@@ -1,27 +1,27 @@
 from django.contrib.admin import ModelAdmin, register
-from .models import speciality, doctor, patient, comment, reserve
+from .models import Speciality, Doctor, Patient, Comment, Reserve
 # Register your models here.
 
-@register(speciality)
-class speciality_admin(ModelAdmin):
-    list_display =['Name']
+@register(Speciality)
+class SpecialityAdmin(ModelAdmin):
+    list_display =['name']
 
-@register(doctor)
-class doctor_admin(ModelAdmin):
-    list_display =['Name', 'Specialty']
-    search_fields =('Specialty__Name',)
+@register(Doctor)
+class DoctorAdmin(ModelAdmin):
+    list_display =['name', 'specialty']
+    search_fields =('specialty__Name',)
 
-@register(patient)
-class patient_admin(ModelAdmin):
-    list_display =['Name']
+@register(Patient)
+class PatientAdmin(ModelAdmin):
+    list_display =['name']
 
-@register(reserve)
-class reserve_admin(ModelAdmin):
-    list_filter =['Time']
-    search_fields =['Doctor__Name']
+@register(Reserve)
+class ReserveAdmin(ModelAdmin):
+    list_filter =['time']
+    search_fields =['doctor__Name']
 
-@register(comment)
-class comment_admin(ModelAdmin):
-    list_display=['User','Doctor', 'Comment']
+@register(Comment)
+class CommentAdmin(ModelAdmin):
+    list_display=['user','doctor', 'comment']
 
 

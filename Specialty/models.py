@@ -1,42 +1,42 @@
 from django.db import models
 # Create your models here.
 
-class speciality(models.Model):
-    Name=models.CharField(max_length=100)
+class Speciality(models.Model):
+    name=models.CharField(max_length=100)
     def __str__(self):
-        return self.Name
+        return self.name
 
-class doctor(models.Model):
-    Name=models.CharField(max_length=200)
-    Specialty = models.ForeignKey(speciality, on_delete=models.CASCADE)
-    Sum_Scores=models.FloatField(default=0, editable=False)
-    Count_Scores=models.FloatField(default=0, editable=False)
-    Average_Score=models.FloatField(default=0, editable=False)
-    Code=models.CharField(max_length=6, unique=True)
-    Phone_number=models.CharField(max_length=11)
-    Visit_cost=models.IntegerField()
+class Doctor(models.Model):
+    name=models.CharField(max_length=200)
+    specialty = models.ForeignKey(Speciality, on_delete=models.CASCADE)
+    sum_Scores=models.FloatField(default=0, editable=False)
+    count_Scores=models.FloatField(default=0, editable=False)
+    average_Score=models.FloatField(default=0, editable=False)
+    code=models.CharField(max_length=6, unique=True)
+    phone_number=models.CharField(max_length=11)
+    visit_cost=models.IntegerField()
     def __str__(self):
-        return self.Name
+        return self.name
 
 
-class patient(models.Model):
-    Name=models.CharField(max_length=200)
-    Age=models.PositiveIntegerField()
-    National_id=models.IntegerField()
+class Patient(models.Model):
+    name=models.CharField(max_length=200)
+    age=models.PositiveIntegerField()
+    national_id=models.IntegerField()
     def __str__(self):
-        return self.Name
+        return self.name
 
-class reserve(models.Model):
-    Bimar = models.ForeignKey(patient, on_delete=models.CASCADE)
-    Doctor = models.ForeignKey(doctor, on_delete=models.CASCADE)
-    Time = models.TimeField()
-    Date = models.DateField()
+class Reserve(models.Model):
+    bimar = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
+    time = models.TimeField()
+    date = models.DateField()
     def __str__(self):
-        return f'{self.Bimar} - {self.Doctor} in {self.Time}'
+        return f'{self.bimar} - {self.doctor} in {self.time}'
 
-class comment(models.Model):
-    User = models.CharField(max_length=100)
-    Comment = models.TextField()
-    Doctor = models.ForeignKey(doctor, on_delete=models.CASCADE)
+class Comment(models.Model):
+    user = models.CharField(max_length=100)
+    comment = models.TextField()
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     def __str__(self):
-        return self.Comment
+        return self.comment

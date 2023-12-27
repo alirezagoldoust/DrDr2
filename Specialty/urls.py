@@ -1,9 +1,9 @@
 from django.urls import path
-from .views import List_Doctor, List_Specialty, Reserve
+from .views import list_doctor, list_specialty, reserve
 
 urlpatterns = [
-    path('', List_Specialty),
-    path('<str:speciality_name>/', List_Doctor),
-    path('<str:speciality_name>/<str:doctor_id>/', Reserve),
+    path('', list_specialty),
+    path('<str:speciality_name>/', list_doctor),
+    path('<str:speciality_name>/<str:doctor_id>/', reserve),
 ]
 
