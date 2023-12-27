@@ -11,7 +11,7 @@ def List_Specialty(request):
 
 def List_Doctor(request, speciality_name):
     doctors = doctor.objects.filter(Specialty__Name = speciality_name)
-    return render(request, 'Logy/logy.html', context={'doctors':doctors})
+    return render(request, 'Logy/logy.html', context={'doctors':doctors, 'specialty':speciality_name})
 
 def Reserve(request, speciality_name, doctor_id):
     if request.method == 'GET':

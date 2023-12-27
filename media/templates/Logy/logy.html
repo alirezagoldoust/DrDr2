@@ -40,7 +40,7 @@
             {% for item in doctors %}
                 <tr>
                     <td>{{ item.Name }}</td>
-                        <td> <a href="/specialty/{{ item.Code }}"><button type="button" class="btn btn-primary" >دریافت نوبت</button></a></td>
+                        <td> <a href="/specialty/{{ specialty }}/{{ item.Code }}"><button type="button" class="btn btn-primary" >دریافت نوبت</button></a></td>
                 </tr>
             {% endfor %}
         </tbody>
