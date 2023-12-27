@@ -18,7 +18,7 @@ def Reserve(request, speciality_name, doctor_id):
     if request.method == 'GET':
         # Sending the selected doctors data to html
         dr = doctor.objects.get(Code=doctor_id)
-        return render(request, 'Detail/detail.html', context={'flag':False,'doctor':dr})
+        return render(request, 'Detail/detail.html', context={'doctor':dr})
 
     if request.method == 'POST':
         # Getting data about reservation
